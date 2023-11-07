@@ -1,8 +1,9 @@
 NAME		=	so_long
 
 SRC_M		=	SRC/so_long.c\
-				SRC/map_check.c\
-				SRC/check_ber.c\
+			SRC/map_check.c\
+			SRC/cep.c\
+			SRC/read_map\
 
 $(NAME)		:	$(SRC_M) $(LIB) $(GET)
 			@cc -Wall -Werror -Wextra $(SRC_P) $(LIB) $(GET) -lmlx -framework OpenGL -framework AppKit -o so_long
