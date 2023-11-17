@@ -16,6 +16,10 @@ typedef struct s_game
 	int		n_colect;
 	int		n_player;
 	int		n_exit;
+	int		win_width;
+	int		win_height;
+	int		img_wid;
+	int		img_hei;
 }	t_game;
 
 int 	map_check(t_game *game);

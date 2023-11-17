@@ -26,19 +26,9 @@ int main(int ac, char **av)
         }
         if (check_ber(av[1]) && map_check(&game))
         {
-            game.mlx = mlx_init();
-            if (!game.mlx)
-            {
-                ft_error("Error: mlx_init() failed\n");
-                return (0);
-            }
-            game.win = mlx_new_window(game.mlx, 1000, 1000, "so_long");
-            if (!game.win)
-            {
-                ft_error("Error: mlx_new_window() failed\n");
-                return (0);
-            }
-            mlx_loop(game.mlx);
+           init_game(&game);
+           play_game(&game);
+           mlx_loop(game.mlx);
         }
     }
     else
