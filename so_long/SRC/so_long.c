@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 15:20:48 by halaoui           #+#    #+#             */
+/*   Updated: 2023/11/17 15:20:48 by halaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int check_ber(char *str)
@@ -18,17 +30,17 @@ int main(int ac, char **av)
 
     if (ac == 2)
     {
+        check_ber(av[1]);
         game.map = read_map(av[1]);
         if(!game.map)
         {
             ft_error("Error: Map not found\n");
             return (0);
         }
-        if (check_ber(av[1]) && map_check(&game))
+        if (map_check(&game))
         {
-           init_game(&game);
-           play_game(&game);
-           mlx_loop(game.mlx);
+           for (int i = 0; game.map[i] != NULL; i++)
+            printf("%s\n", game.map[i]);
         }
     }
     else

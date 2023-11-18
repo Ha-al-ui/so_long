@@ -1,8 +1,20 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 15:20:31 by halaoui           #+#    #+#             */
+/*   Updated: 2023/11/17 15:20:31 by halaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+#include "../SRC/so_long.h"
+
+char	*ft_substr(const char *s, unsigned int start, int len)
 {
-	size_t			i;
+	int			i;
 	unsigned int	strl_len;
 	char			*p;
 

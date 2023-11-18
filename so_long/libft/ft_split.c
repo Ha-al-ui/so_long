@@ -1,73 +1,78 @@
-#include"so_long.h"
+#include "../SRC/so_long.h"
 
-static size_t	str_count(char const *s, char c)
+static int	car_coun( const char *s, char c)
 {
-	size_t	i;
-	size_t	count;
+	int	i;
+	int	coun;
 
 	i = 0;
-	count = 0;
-	while (s[i] != '\0')
-	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
-			count++;
-		while (s[i] != c && s[i])
-			i++;
-	}
-	return (count);
-}
-
-char	**freee(char **tab)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
+	coun = 0;
+	if (ft_strlen(s) == 0)
+		return (0);
+	while (s[i] == c)
 		i++;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			coun++;
+			while (s[i] == c)
+				i++;
+		}
+		else
+			i++;
 	}
-	free(tab);
-	return (NULL);
+	if (s[i - 1] != c)
+		coun++;
+	return (coun);
 }
 
-char	**put_split(char const *s, char c)
+static void	ft_free(char **p)
 {
-	size_t	start;
-	size_t	end;
-	size_t	i;
-	char	**split;
+	int	i;
 
-	start = 0;
-	end = 0;
 	i = 0;
-	split = (char **)malloc(sizeof(char *) * (str_count(s, c) + 1));
-	if (!split)
+	while (p[i])
+		free(p[i++]);
+	free(p);
+}
+
+static char	**split_m(const char *s, char c)
+{
+	char	**p;
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	p = malloc(sizeof(char *) * (car_coun(s, c) + 1));
+	if (!p)
 		return (NULL);
-	while (i < str_count(s, c))
+	while (*s)
 	{
-		while (s[start] == c)
-			start++;
-		end = start;
-		while (s[end] != c && s[end])
-			end++;
-		split[i++] = ft_substr(s, start, (end - start));
-		if (!split[i - 1])
-			return (freee(split));
-		start = end;
+		if (*s != c)
+		{
+			len = 0;
+			while (*s && *s != c && ++len)
+				s++;
+			p[i++] = ft_substr(s - len, 0, len);
+			if (!p)
+				ft_free(p);
+		}
+		else
+			s++;
 	}
-	split[i] = NULL;
-	return (split);
+	p[i] = NULL;
+	return (p);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**split;
+	char		**p;
 
 	if (!s)
+		return (0);
+	p = split_m(s, c);
+	if (!p)
 		return (NULL);
-	split = put_split(s, c);
-	return (split);
+	return (p);
 }

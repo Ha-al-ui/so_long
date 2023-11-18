@@ -8,7 +8,9 @@ MLX			=	-lmlx -framework OpenGL -framework AppKit
 
 SRC_M		=	SRC/so_long.c\
 				SRC/map_check.c\
-				SRC/check_ber.c\
+				SRC/cep.c\
+				SRC/read_map.c\
+				SRC/init_game.c\
 				libft/ft_error.c\
 				libft/ft_strlen.c\
 				libft/ft_strjoin.c\
@@ -23,7 +25,7 @@ OBJS		=	$(SRC_M:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(MLX) -o $(NAME)
+				$(CC) $(OBJS) $(CFLAGS) $(MLX) -o $(NAME)
 
 %o: %c so_long.h
 	$(CC) $(CFLAGS) -c $< 

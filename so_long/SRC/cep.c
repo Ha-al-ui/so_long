@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cep.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 15:20:37 by halaoui           #+#    #+#             */
+/*   Updated: 2023/11/17 15:20:37 by halaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int player_check(t_game *game)
@@ -35,7 +47,7 @@ int collect_check(t_game *game)
                 game->n_collect++;
         }
     }
-    if (game->n_colect == 0)
+    if (game->n_collect == 0)
         return (0);
     return (1);
 }
@@ -55,7 +67,7 @@ int exit_check(t_game *game)
                 game->n_exit++;
         }
     }
-    if (game->n_exit == 0)
+    if (game->n_exit != 1)
         return (0);
     return (1);
 }

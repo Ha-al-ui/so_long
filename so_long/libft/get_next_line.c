@@ -1,6 +1,18 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 15:20:34 by halaoui           #+#    #+#             */
+/*   Updated: 2023/11/17 15:20:34 by halaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static	check_line(char *string)
+#include "../SRC/so_long.h"
+
+static int	check_line(char *string)
 {
 	int	i;
 
@@ -16,7 +28,7 @@ static	check_line(char *string)
 	return (0);
 }
 
-static	*ft_res(char **string, int j)
+static char	*ft_res(char **string, int j)
 {
 	char	*s;
 
@@ -26,14 +38,14 @@ static	*ft_res(char **string, int j)
 	return (s);
 }
 
-char	*ft_line(char **string, char **line, int j)
+static char	*ft_line(char **string, char **line, int j)
 {
 	*line = ft_substr(*string, 0, j);
 	*string = ft_res(string, j);
 	return (*line);
 }
 
-static	*get_next_too(char *buff, int fd)
+static char	*get_next_too(char *buff, int fd)
 {
 	static char	*string;
 	char		*line;

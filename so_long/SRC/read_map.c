@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 15:20:46 by halaoui           #+#    #+#             */
+/*   Updated: 2023/11/17 15:20:46 by halaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 char    **read_map(char *path)
@@ -7,9 +19,10 @@ char    **read_map(char *path)
     char    **map;
     char    *holder_map;
 
+	holder_map = NULL;
     fd = open(path, O_RDONLY);
 	if (fd < 0)
-        ft_error("Error\nFile not found\n");
+        ft_error("Error : File not found\n");
 	while (1)
 	{
 		line = get_next_line(fd);
