@@ -33,6 +33,15 @@ typedef struct s_game
 	int		win_height;
 	int		img_wid;
 	int		img_hei;
+	void	*img_wall;
+	void	*img_player;
+	void	*img_collect;
+	void	*img_exit;
+	void	*img_floor;
+	int		x_player;
+	int		y_player;
+	int		move;
+	int		over;
 }	t_game;
 
 int 	map_check(t_game *game);
