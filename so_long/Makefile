@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: halaoui <halaoui@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/23 09:46:54 by halaoui           #+#    #+#              #
+#    Updated: 2023/11/23 09:46:54 by halaoui          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		=	so_long
 
-CC 			=	gcc
+CC 			=	cc
 
 CFLAGS		=	-Wall -Werror -Wextra
 
@@ -13,6 +25,9 @@ SRC_M		=	SRC/so_long.c\
 				SRC/drw_map.c\
 				SRC/init_game.c\
 				SRC/move_ment.c\
+				SRC/key_bord.c\
+				SRC/close_game.c\
+				SRC/path.c\
 				libft/ft_error.c\
 				libft/ft_strlen.c\
 				libft/ft_strjoin.c\
@@ -21,6 +36,8 @@ SRC_M		=	SRC/so_long.c\
 				libft/ft_strdup.c\
 				libft/ft_substr.c\
 				libft/get_next_line.c\
+				libft/ft_putnbr.c\
+				libft/ft_putchar.c\
 
 OBJS		=	$(SRC_M:.c=.o)
 
@@ -30,7 +47,7 @@ $(NAME)		:	$(OBJS)
 				$(CC) $(OBJS) $(CFLAGS) $(MLX) -o $(NAME)
 
 %o: %c so_long.h
-	$(CC) $(CFLAGS) -c $< 
+	$(CC) $(CFLAGS) -c $<
 
 clean		:
 				@rm -f $(OBJS)

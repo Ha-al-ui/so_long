@@ -12,34 +12,44 @@
 
 #include "so_long.h"
 
-static int validate_line(char *line)
+int	width_of_map(char	**map)
 {
-    int j;
+	int	i;
+
+	i = 0;
+	while (map[0][i])
+		i++;
+	return (i);
+}
+
+static	int	validate_line(char *line)
+{
+	int	j;
 
 	if (ft_strlen(line) == 1)
 		return (0);
-    j = 0;
-    while (line[j] && line[j] != '\n')
-    {
-        if (line[j] != '1' && line[j] != '0' && line[j] != 'C' 
+	j = 0;
+	while (line[j] && line[j] != '\n')
+	{
+		if (line[j] != '1' && line[j] != '0' && line[j] != 'C' 
 			&& line[j] != 'E' && line[j] != 'P')
-            return (0);
-        j++;
-    }
-    return (1);
+			return (0);
+		j++;
+	}
+	return (1);
 }
 
-char    **read_map(char *path)
+char	**read_map(char *path)
 {
-    int     fd;
-    char    *line;
-    char    **map;
-    char    *holder_map;
+	int		fd;
+	char	*line;
+	char	**map;
+	char	*holder_map;
 
 	holder_map = NULL;
-    fd = open(path, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd < 0)
-        ft_error("Error : File not found\n");
+		ft_error("Error\nFile not found\n");
 	while (1)
 	{
 		line = get_next_line(fd);
